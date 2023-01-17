@@ -59,21 +59,13 @@ else()
     target_link_libraries(crypto INTERFACE crypto_lib)
 
     # set up prefix
-    if (BUILD_OPENSSL)
-        set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
-    else()
-        set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/openssl-prefix/src/openssl)
-    endif()
+    set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
 
     set(OPENSSL_LIBSSL_PATH ${OPENSSL_PREFIX}/usr/local/lib/libssl.a)
     set(OPENSSL_LIBCRYPTO_PATH ${OPENSSL_PREFIX}/usr/local/lib/libcrypto.a)
     
     # set up openssl target
-    if (BUILD_OPENSSL)
-        include(BuildOpenSSL)
-    else()
-        include(PrebuiltOpenSSL)
-    endif()
+    include(BuildOpenSSL)
     
     # set import locations
     set_target_properties(ssl_lib PROPERTIES IMPORTED_LOCATION ${OPENSSL_LIBSSL_PATH})
