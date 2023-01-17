@@ -23,7 +23,7 @@
 
 # build openssl locally
 
-SET(OPENSSL_BUILD_VERSION openssl-3.0.7)
+SET(OPENSSL_BUILD_VERSION 3.0.7)
 
 # includes
 include(ProcessorCount)
